@@ -16,4 +16,13 @@ public class StudentController {
 		model.addAttribute("students", studentMapper.findAll());
 		return "student/list";
 	}
+
+	@RequestMapping("student/list1")
+	public String list1(Model model, String srchText) {
+		if (srchText == null)
+			srchText = "";
+		model.addAttribute("students", studentMapper.findByName(srchText +"%" ));
+		model.addAttribute("srchText", srchText);
+		return "student/list1";
+	}
 }
